@@ -27,3 +27,5 @@ require __DIR__.'/auth.php';
 
 Route::resource('/discussions', DiscussionsController::class);
 Route::resource('/discussions/{discussion}/replies', ReplyController::class);
+
+Route::post('/discussions/{discussion}/replies/{reply}/mark-as-best-reply', [DiscussionsController::class, 'reply'])->name('discussions.best-reply');
