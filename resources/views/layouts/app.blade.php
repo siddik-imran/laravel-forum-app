@@ -30,39 +30,38 @@
             </header> --}}
 
             <!-- Page Content -->
-           @auth
-                <main>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4 my-3">
-                                <a href="{{ route('discussions.create') }}" class="btn btn-info my-2" style="color:white; width:100%">Add Discussion</a>
-                                <div class="card">
-                                    <div class="card-header">
-                                        Channels
-                                    </div>
-                                    <div class="card-body">
-                                        <ul class="list-group">
-                                            @foreach ($channels as $channel)
-                                                <li class="list-group-item">
-                                                    {{ $channel->name }}
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+            <main>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 my-3">
+                            @auth
+                            <a href="{{ route('discussions.create') }}" class="btn btn-info my-2" style="color:white; width:100%">Add Discussion</a>
+                            @else
+                            <a href="{{ route('login') }}" class="btn btn-info my-2" style="color:white; width:100%">Sign in to add Discussion</a>
+                            @endauth
+
+                            <div class="card">
+                                <div class="card-header">
+                                    Channels
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        @foreach ($channels as $channel)
+                                            <li class="list-group-item">
+                                                {{ $channel->name }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="col-md-8">
-                                @yield('content')
-                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            @yield('content')
                         </div>
                     </div>
+                </div>
 
-                </main>
-           @else
-                <main>
-                    @yield('content')
-                </main>
-           @endauth
+            </main>
         </div>
 
 

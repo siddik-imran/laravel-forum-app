@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DiscussionsController;
+use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,4 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/discussions', DiscussionsController::class);
+Route::resource('/discussions/{discussion}/replies', ReplyController::class);

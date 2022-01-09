@@ -5,24 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Discussion extends Model
+class Reply extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
-    public function author()
+    public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function replies()
+    public function discussion()
     {
-        return $this->hasMany(Reply::class);
+        return $this->belongsTo(Discussion::class);
     }
 }
