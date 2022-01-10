@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateReplyRequest;
 use App\Models\Discussion;
+use App\Notifications\NewReplyAdded;
 use Illuminate\Http\Request;
 
 class ReplyController extends Controller
@@ -40,6 +41,8 @@ class ReplyController extends Controller
             'discussion_id' => $discussion->id,
             'content' => $request->content
         ]);
+
+        $discussion->author->notify(new NewReplyAdded($discussion));
 
         session()->flash('success', 'Reply Added');
         return redirect()->back();

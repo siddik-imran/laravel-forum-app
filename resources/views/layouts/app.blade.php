@@ -18,7 +18,7 @@
 
 
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans ">
         <div class="min-h-screen bg-gray-100 ">
             @include('layouts.navigation')
 
@@ -34,7 +34,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 my-3">
+
                             @auth
+                            <a href="{{ route('users.notifiactions') }}">
+                                <span class="badge badge-warning" style="color:white">
+                                    {{ auth()->user()->unreadNotifications->count() }} Unread Notification
+                                </span>
+                            </a>
                             <a href="{{ route('discussions.create') }}" class="btn btn-info my-2" style="color:white; width:100%">Add Discussion</a>
                             @else
                             <a href="{{ route('login') }}" class="btn btn-info my-2" style="color:white; width:100%">Sign in to add Discussion</a>

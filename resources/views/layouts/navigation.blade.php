@@ -67,6 +67,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+
+                </li>
+            </ul>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -75,6 +80,7 @@
                 @auth
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+              
                 @endauth
             </div>
 
